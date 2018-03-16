@@ -88,7 +88,11 @@ int main(void)
         if (strcmp(args[0], "exit") == 0) {
             break;
         }
-
+        if (fork() == 0) {
+            execl("/bin/ls", "ls", "-la", NULL);
+        } else {
+            execvp(args[0], &args[0]);
+        }
         #if DEBUG
 
         // Some debugging output
