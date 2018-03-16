@@ -5,13 +5,25 @@
 Add your answers inline, below, with your pull request.
 
 1. List all of the main states a process may be in at any point in time on a
-   standard Unix system. Briefly explain what each of these states mean.
+    standard Unix system. Briefly explain what each of these states mean.
+
+    R - A running process
+    S - Sleep or waiting for something from another process.
+    Z - Zombie! Terminated process but still hanging around
+    T - Stopped by the scheduler
 
 2. What is a Zombie Process? How does it get created? How does it get destroyed?
 
+  A Zombie process is a child process that has completed running and is terminated but is still in the process table.
+  Zombie processes are usually created when the parent still needs data from the child like an exit code. Once the parent gets whatever it needs the zombie dies. 
+
 3. Describe the job of the Scheduler in the OS in general.
 
+  The scheduler keeps track of all processes or jobs and determines the order of execution of those jobs through a queue.
+
 4. Describe the benefits of the MLFQ over a plain Round-Robin scheduler.
+
+  MLFQ trys to reduce starvation of processes through using a priority queue and aging queue. Starvation is where a process is waiting for resources that keeps being given to other processes and eventually will freeze. 
 
 ## Programming Exercise: The Lambda School Shell (`lssh`)
 
